@@ -10,7 +10,7 @@
     <label for="category">Select category:</label>
     <select name="category" id="category"></select>
 
-    <button id="startButton">Start Game</button>
+    <button id="startButton" @click="startGame()">Start Game</button>
   </div>
 </template>
 
@@ -19,6 +19,11 @@ export default {
   name: 'StartScreen',
   components: {
     
+  },
+  methods: {
+    startGame() {
+      this.$router.push("/questions");
+    }
   }
 }
 </script>

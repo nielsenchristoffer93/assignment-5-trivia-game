@@ -1,8 +1,13 @@
 import Vue from 'vue'
-import StartScreen from './StartScreen.vue'
+import App from './App.vue';
+import VueRouter from 'vue-router';
+import router from './router';
+//import StartScreen from './views/StartScreen.vue'
 
+Vue.use(VueRouter);
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(StartScreen),
-}).$mount('#StartScreen')
+  router,
+  render: h => h(App),
+}).$mount('#App')
