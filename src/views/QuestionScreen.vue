@@ -2,7 +2,7 @@
     <div>
         <h2>Welcome to the questions!</h2>
                 <button @click="results()">Play again?</button>
-
+        <p>{{this.props}} + ' World'</p>
     </div>
 </template>
 
