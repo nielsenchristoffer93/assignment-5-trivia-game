@@ -10,7 +10,7 @@
       <b-row>
         <label for="difficulty">Select difficulty:</label>
         <b-form-select v-model="selectedDifficulty" name="difficulty" id="difficulty">
-          <option :value="null">Any Difficulty</option>
+          <!--<option :value="null">Any Difficulty</option>-->
           <option v-for="difficulty in this.difficulties" :key="difficulty.value" :value="difficulty.text.toLowerCase()">
             {{difficulty.text}}
           </option>
@@ -19,14 +19,16 @@
       <b-row>
         <label for="category">Select category:</label>
         <b-form-select v-model="selectedCategory" name="category" id="category" >
-          <option :value="null">Any Category</option>
+          <!--<option :value="null">Any Category</option>-->
           <option v-for="category in this.categories" :key="category.id" :value="category.id">
             {{category.name}}
           </option>
         </b-form-select>
       </b-row>
       <b-row>
+        <router-link :to="`/questions/${this.selectedCategory}/${this.selectedNumberOfQuestions}/${this.selectedDifficulty}`" style="text-decoration: none;">
         <b-button block variant="success" id="startButton" @click="startGame()">Start Game</b-button>
+        </router-link>
       </b-row>
     </b-card>
     </b-col>
@@ -41,7 +43,10 @@ export default {
   },
   methods: {
     startGame() {
-      this.$router.push("/questions");
+      /*this.$emit('selected-category', this.selectedCategory);
+      this.$emit('selected-difficulty', this.selectedDifficulty);
+      this.$emit('selected-number-of-questions', this.selectedNumberOfQuestions);
+      this.$router.push(`/questions/${this.selectedCategory}/${this.selectedNumberOfQuestions}/${this.selectedDifficulty}}`);*/
     }
   },
   created: function() {
