@@ -1,16 +1,17 @@
 <template>
   <b-container>
-    <h1 id="welcome">WELCOME TO A TRIVIA GAME MADE WITH VUE</h1>
+    <h1 id="welcome-heading">WELCOME TO A TRIVIA GAME MADE WITH VUE</h1>
     <b-col id="input" md="6" offset-md="3" align-self="center">
     <b-card id="card">
       <b-row>
         <label for="numberOfQuestions">Number of questions:</label>
-        <b-form-input type="number" id="numberOfQuestions"/>
+        <b-form-input v-model="selectedNumberOfQuestions" type="number" id="numberOfQuestions"></b-form-input>
       </b-row>
       <b-row>
         <label for="difficulty">Select difficulty:</label>
         <b-form-select v-model="selectedDifficulty" name="difficulty" id="difficulty">
-          <option v-for="difficulty in this.difficulties" :key="difficulty.value">
+          <option :value="null">Any Difficulty</option>
+          <option v-for="difficulty in this.difficulties" :key="difficulty.value" :value="difficulty.text.toLowerCase()">
             {{difficulty.text}}
           </option>
         </b-form-select>
@@ -18,8 +19,9 @@
       <b-row>
         <label for="category">Select category:</label>
         <b-form-select v-model="selectedCategory" name="category" id="category" >
-          <option v-for="category in this.categories" :key="category.id">
-          {{category.name}}
+          <option :value="null">Any Category</option>
+          <option v-for="category in this.categories" :key="category.id" :value="category.id">
+            {{category.name}}
           </option>
         </b-form-select>
       </b-row>
@@ -58,10 +60,6 @@ export default {
       categories: [],
       difficulties: [
       {
-        value: 1,
-        text: "Any Difficulty"
-      },
-      {
         value: 2,
         text: "Easy"
       },
@@ -75,7 +73,8 @@ export default {
       }
       ],
       selectedCategory: null,
-      selectedDifficulty: null
+      selectedDifficulty: null,
+      selectedNumberOfQuestions: "10"
     }
   },
 }
@@ -83,17 +82,16 @@ export default {
 
 <style>
 #startButton {
-  margin-top: 10vh
+  margin-top: 6vh;
 }
-#welcome {
+#welcome-heading {
   text-align: center;
-  margin: 5vh 0 15vh 0;
+  margin: 5vh 0 10vh 0;
 }
 #card {
   padding: 20px;
   background-color: rgba(224, 224, 224, 0.867);
 }
-
 /* {
   font-family: 'Roboto', sans-serif;
 }
