@@ -1,12 +1,16 @@
 <template>
-    <b-button block variant="outline-secondary" class="question-buttons" @click="nextQuestion">{{alternative}}</b-button>
+    <b-button block variant="outline-secondary" class="question-buttons" @click="next">{{alternative}}</b-button>
 </template>
 
 <script>
 export default {
     props: {
         alternative: String,
-        nextQuestion: Function
+    },
+    methods: {
+        next() {
+            this.$emit('next', this.alternative);
+        }
     }
 }
 </script>

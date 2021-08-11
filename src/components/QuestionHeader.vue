@@ -2,7 +2,7 @@
     <b-container>
         <b-row align-h="between" class="category">
             <h3>Category: {{category}} 🎶</h3>
-            <h3>Question: {{index}}/10</h3>
+            <h3>Question: {{index}}/{{numberOfQuestions}}</h3>
         </b-row>
         <b-row>
             <h1 class="question">{{question}}</h1>
@@ -17,7 +17,8 @@
         props: {
             category: String,
             question: String,
-            index: Number
+            index: Number,
+            numberOfQuestions: Number
         }
     }
 </script>

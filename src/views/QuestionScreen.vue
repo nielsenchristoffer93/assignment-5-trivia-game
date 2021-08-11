@@ -2,8 +2,9 @@
     <b-container>
       <QuestionBox 
         :question="questions[index]" 
-        :nextQuestion="nextQuestion" 
         :index="index"
+        :numberOfQuestions="questions.length"
+        @next="next"
         />
     </b-container>
 </template>
@@ -24,15 +25,17 @@ export default {
   data() {
     return {
       questions: [],
-      index: 0
+      index: 0,
+      playerAnswers: []
     };
   },
   methods: {
-    results() {
-      this.$router.push("/results");
-    }, 
-    nextQuestion() {
-      this.index++;
+    next(alternative) {
+        this.index++;
+        this.playerAnswers.push(alternative);
+        if(this.index === this.questions.length){
+            this.$router.push("/results");
+        }
     }
   },
   created() {

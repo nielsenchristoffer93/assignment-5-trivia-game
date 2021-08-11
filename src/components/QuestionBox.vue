@@ -1,9 +1,9 @@
 <template>
     <b-container>
-        <QuestionHeader :category="question.category" :question="question.question" :index="index+1"/>
+        <QuestionHeader :category="question.category" :question="question.question" :index="index+1" :numberOfQuestions="numberOfQuestions"/>
             <div v-for="alternative in answers(question)" :key="alternative">
               <b-row>
-                <QuestionAlternative :alternative="alternative" :nextQuestion="nextQuestion"/>
+                <QuestionAlternative :alternative="alternative" @next="next"/>
               </b-row>
             </div>
     </b-container>
@@ -21,15 +21,18 @@ components: {
     props: {
         question: Object,
         index: Number,
-        nextQuestion: Function
+        numberOfQuestions: Number
     },
     methods: {
       answers(question) {
         let alternatives = [...question.incorrect_answers];
         alternatives.push(question.correct_answer);
         return alternatives;
+      },
+      next(alternative){
+        this.$emit('next', alternative)
       }
-    }
+    },
 }
 </script>
 
