@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <h2>Welcome to the questions!</h2>
-    <button @click="results()">Play again?</button>
-    <p>{{ this.category }}</p>
-  </div>
+    <b-container>
+      <QuestionBox 
+        :question="questions[index]" 
+        :nextQuestion="nextQuestion" 
+        :index="index"
+        />
+    </b-container>
 </template>
 
 <script>
+import QuestionBox from "../components/QuestionBox.vue";
+
 export default {
   name: "QuestionScreen",
   props: {
@@ -14,15 +18,22 @@ export default {
     difficulty: String,
     numberOfQuestions: String,
   },
+  components: {
+      QuestionBox,
+  },
   data() {
     return {
       questions: [],
+      index: 0
     };
   },
   methods: {
     results() {
       this.$router.push("/results");
-    },
+    }, 
+    nextQuestion() {
+      this.index++;
+    }
   },
   created() {
     fetch(
@@ -37,6 +48,6 @@ export default {
       .then((jsonData) => {
         this.questions = jsonData.results;
       });
-  },
+  }
 };
 </script>

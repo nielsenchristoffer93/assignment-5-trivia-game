@@ -62,6 +62,9 @@ export default {
   },
   data() {
     return {
+      selectedCategory: String,
+      selectedDifficulty: String,
+      selectedNumberOfQuestions: "10",
       categories: [],
       difficulties: [
       {
@@ -76,10 +79,7 @@ export default {
         value: 4,
         text: "Hard"
       }
-      ],
-      selectedCategory: null,
-      selectedDifficulty: null,
-      selectedNumberOfQuestions: "10"
+      ]
     }
   },
 }
@@ -97,33 +97,4 @@ export default {
   padding: 20px;
   background-color: rgba(224, 224, 224, 0.867);
 }
-/* {
-  font-family: 'Roboto', sans-serif;
-}
-
-.flex-container {
-  width: 60vw;
-  margin: 0 20vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-label {
-   margin-top: 20px;
-}
-
-input, 
-select,
-button {
-  height: 40px;
-  padding: 0;
-  border-radius: 50px;
-}
-
-button {
-  margin-top: 40px;
-  background-color: green;
-}
-*/
 </style>
