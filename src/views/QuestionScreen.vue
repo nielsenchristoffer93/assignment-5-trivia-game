@@ -2,7 +2,7 @@
     <b-container>
       <QuestionBox 
         :question="questions[index]" 
-        :index="index"
+        :index="index+1"
         :numberOfQuestions="questions.length"
         @next="next"
         />
@@ -11,6 +11,7 @@
 
 <script>
 import QuestionBox from "../components/QuestionBox.vue";
+import {setStorage} from "../storage";
 
 export default {
   name: "QuestionScreen",
@@ -32,25 +33,19 @@ export default {
   methods: {
     next(alternative) {
         this.index++;
-        this.playerAnswers.push(alternative);
+        this.playerAnswers.push(alternative)
+        setStorage("answers", this.playerAnswers);
         if(this.index === this.questions.length){
             this.$router.push("/results");
         }
     }
   },
-  created() {
-    fetch(
-      `https://opentdb.com/api.php?amount=${this.numberOfQuestions}&category=${this.category}&difficult=${this.difficulty}`,
-      {
-        method: "get",
-      }
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((jsonData) => {
-        this.questions = jsonData.results;
-      });
+  async created() {
+    await fetch(`https://opentdb.com/api.php?amount=${this.numberOfQuestions}&category=${this.category}&difficult=${this.difficulty}`)
+    .then(response => response.json())
+    .then(data => (this.questions = data.results))
+
+    setStorage("questions", this.questions);
   }
 };
 </script>

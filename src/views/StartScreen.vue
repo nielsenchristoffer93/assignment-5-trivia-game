@@ -26,8 +26,10 @@
         </b-form-select>
       </b-row>
       <b-row>
+        <!--https://opentdb.com/api.php?amount=10&category=24&difficulty=medium-->
+        <!--TA BORT ROUTER LINK OCH LÄGG TILL EN METOD FÖR STARTGAME OCH SPARA KATEOGIR, DIFFICULTY OCH AMOUNT-->
         <router-link :to="`/questions/${this.selectedCategory}/${this.selectedNumberOfQuestions}/${this.selectedDifficulty}`" style="text-decoration: none;">
-        <b-button block variant="success" id="startButton" @click="startGame()">Start Game</b-button>
+          <b-button block variant="success" id="startButton">Start Game</b-button>
         </router-link>
       </b-row>
     </b-card>
@@ -40,25 +42,6 @@ export default {
   name: 'StartScreen',
   components: {
     
-  },
-  methods: {
-    startGame() {
-      /*this.$emit('selected-category', this.selectedCategory);
-      this.$emit('selected-difficulty', this.selectedDifficulty);
-      this.$emit('selected-number-of-questions', this.selectedNumberOfQuestions);
-      this.$router.push(`/questions/${this.selectedCategory}/${this.selectedNumberOfQuestions}/${this.selectedDifficulty}}`);*/
-    }
-  },
-  created: function() {
-    fetch("https://opentdb.com/api_category.php", {
-      method: "get"
-    })
-    .then((response) => {
-      return response.json();
-    })
-    .then((jsonData) => {
-      this.categories = jsonData.trivia_categories;
-    })
   },
   data() {
     return {
@@ -82,6 +65,11 @@ export default {
       ]
     }
   },
+  created() {
+    fetch("https://opentdb.com/api_category.php")
+    .then(response => response.json())
+    .then(data => (this.categories = data.trivia_categories));
+  }
 }
 </script>
 
