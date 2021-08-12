@@ -1,6 +1,6 @@
 <template>
     <b-container>
-        <h1 id="welcome-heading">You scored: {{getScore()}} out of {{answers.length*10}}!</h1>
+        <h1 id="welcome-heading">You scored: {{getScore()}} out of {{answers.length*10}}! 🎉</h1>
         <b-row>
             <b-col>
                 <h4 >Your answers</h4>

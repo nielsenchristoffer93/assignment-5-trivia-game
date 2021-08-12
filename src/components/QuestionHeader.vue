@@ -23,12 +23,26 @@
         methods: {
             appendEmojiBasedOnCategory() {
                 if (this.category.includes("Knowledge")) {
-                    return this.category + " 📚"
+                    return this.category + " 🧠"
                 } else if (this.category.includes("Video Games")) {
                     return this.category + " 👾"
-                } else if (this.category.includes("Entertainment")) {
+                } else if (this.category.includes("Books")) {
+                    return this.category + " 📚"
+                } else if (this.category.includes("Film")) {
+                    return this.category + " 🎬"
+                } else if (this.category.includes("Music")) {
+                    return this.category + " 🎶"
+                } else if (this.category.includes("Television")) {
                     return this.category + " 📺"
-                } else if (this.category.includes("Computers")) {
+                } else if (this.category.includes("Board Games")) {
+                    return this.category + " ♟"
+                } else if (this.category.includes("Nature")) {
+                    return this.category + " 🌲"
+                } else if (this.category.includes("Politics")) {
+                    return this.category + " 👨‍⚖️"
+                } else if (this.category.includes("Cartoon")) {
+                    return this.category + " ✏"
+                }  else if (this.category.includes("Computers")) {
                     return this.category + " 💻"
                 } else if (this.category.includes("Sports")) {
                     return this.category + " ⚽"
@@ -52,7 +66,7 @@
 
 <style scoped>
     .question-header {
-        height: 30vh;
+        height: 40vh;
         position: relative;
     }
     .category {
