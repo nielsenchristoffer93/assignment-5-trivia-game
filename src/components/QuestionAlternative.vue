@@ -9,6 +9,9 @@ export default {
         alternative: String,
     },
     methods: {
+        /**
+         * Notifies the parent that an alternative-button has been pressed, and sends back the chosen alternative. 
+         */
         next() {
             this.$emit('next', this.alternative);
         }
