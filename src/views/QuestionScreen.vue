@@ -30,6 +30,11 @@ export default {
     };
   },
   methods: {
+    /**
+     * Used when player clicks an answer. 
+     * Pushes the answer to an array and updates the answers-array in local storage.
+     * If the last question is answer, redirects to resultsPage.
+     */
     next(alternative) {
         this.index++;
         this.playerAnswers.push(alternative)
@@ -39,6 +44,13 @@ export default {
         }
     }
   },
+  /**
+   * Collects the gamesettings from local storage and checks if they are specified. 
+   * If not, the value will be set as coded bellow.
+   * Then it fetches questions based on the settings. 
+   * If there are not enough questions based on the settings an alert will show and the 
+   * player redirected to the startScreen. 
+   */
   async created() {
     this.numberOfQuestions = getStorage("numberOfQuestions");
     this.difficulty = getStorage("selectedDifficulty");
@@ -46,7 +58,6 @@ export default {
 
 
     if (!this.numberOfQuestions) {
-      console.log("HEJ")
       this.numberOfQuestions = "10";
       setStorage("numberOfQuestions", "10");
     }
