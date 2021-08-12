@@ -10,7 +10,7 @@
                 <h4 style="text-align:end;">Correct answers</h4>
             </b-col>
         </b-row>
-        <!-- -->
+        <!-- Loops through all the answers and creates a QuestionResult component -->
         <b-row v-for="(answer, index) in answers" :key="answer">
             <QuestionResult
                 :question="questions[index].question"
@@ -18,7 +18,6 @@
                 :correctAnswer="correctAnswers[index]"
                 />
         </b-row>
-
         <b-row>
             <b-col>
                 <b-button block variant="primary" @click="restart()">Play again</b-button>
@@ -31,7 +30,7 @@
 </template>
 
 <script>
-import {getStorage} from "../storage";
+import { getStorage } from "../storage";
 import QuestionResult from '../components/resultComponents/QuestionResult.vue'
 
 export default {
@@ -47,12 +46,22 @@ export default {
         }
     },
     methods: {
+        /**
+         * Method for restarting game (with same categories, amount of questions and difficulty)
+         */
         restart() {
             this.$router.push("/questions");
         },
+        /**
+         * Method for routing us back to the "homepage" or "start screen".
+         */
         goToStartScreen(){
             this.$router.push("/");
         },
+        /**
+         * Compares users answers with the correct answer of the question.
+         * If they are the same, then score will increase by 10.
+         */
         getScore() {
             let score = 0;
             for(let i = 0; i < this.answers.length; i++) {
@@ -63,6 +72,10 @@ export default {
             return score*10;
         }
     },
+    /**
+     * Lifecycle method, for getting data from browsers local storage, will also loop through every question and push the correct
+     * answer to an array of correctAnswers.
+     */
     created() {
         this.questions = getStorage("questions");
         this.answers = getStorage("answers");

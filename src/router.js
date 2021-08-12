@@ -3,6 +3,7 @@ import StartScreen from "./views/StartScreen.vue";
 import QuestionScreen from "./views/QuestionScreen.vue";
 import ResultScreen from "./views/ResultScreen";
 
+// Routes within application.
 const routes = [
     {
         path: "/",
@@ -10,11 +11,9 @@ const routes = [
         component: StartScreen
     },
     {
-        //path: "/questions/:category/:numberOfQuestions/:difficulty",
         path: "/questions",
         name: "Questions",
         component: QuestionScreen
-        //props: true
     },
     {
         path: "/results",
@@ -23,6 +22,7 @@ const routes = [
     }
 ];
 
+// Creates a new VueRouter
 const router = new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
