@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container v-if="question">
     <QuestionHeader
       :category="question.category"
       :question="question.question"

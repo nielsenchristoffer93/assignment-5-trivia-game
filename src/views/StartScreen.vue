@@ -45,7 +45,7 @@ export default {
     return {
       selectedCategory: null,
       selectedDifficulty: null,
-      numberOfQuestions: "10",
+      numberOfQuestions: 10,
       categories: Array,
       difficulties: [
       {
@@ -71,7 +71,6 @@ export default {
       this.$router.push("/questions");
     },
     numberInRange() {
-      console.log(!(this.numberOfQuestions < 1 || this.numberOfQuestions > 50));
       return (!(this.numberOfQuestions < 1 || this.numberOfQuestions > 50)) ? true: false;
     }
   },

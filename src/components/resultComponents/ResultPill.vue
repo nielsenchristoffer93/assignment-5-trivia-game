@@ -1,13 +1,13 @@
 <template>
     <b-container >
-        <p class="question">{{question}}</p>
+        <p class="question" v-html="question"></p>
         <b-row>
             <b-col class="zeroPaddingRight">
                 <p class="playerAnswer"
-                v-bind:class="[ isAnswerCorrect ? 'playerAnswerCorrect': 'playerAnswer' ]"> {{playerAnswer}}</p>
+                v-bind:class="[ isAnswerCorrect ? 'playerAnswerCorrect': 'playerAnswer' ]" v-html="playerAnswer"></p>
             </b-col>
             <b-col class="zeroPaddingLeft">
-                <p class="correctAnswer"> {{correctAnswer}} </p>
+                <p class="correctAnswer" v-html="correctAnswer"></p>
             </b-col>
         </b-row>
     </b-container>
@@ -19,7 +19,6 @@
         data() {
             return {
                 isAnswerCorrect: this.playerAnswer === this.correctAnswer,
-
             }
         },
         props: {

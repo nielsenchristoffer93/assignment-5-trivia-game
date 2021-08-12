@@ -26,7 +26,7 @@ export default {
       playerAnswers: [],
       category: "",
       difficulty: "",
-      numberOfQuestions: String,
+      numberOfQuestions: Number,
     };
   },
   methods: {
@@ -47,8 +47,8 @@ export default {
 
     if (!this.numberOfQuestions) {
       console.log("HEJ")
-      this.numberOfQuestions = 10;
-      setStorage("numberOfQuestions", 10);
+      this.numberOfQuestions = "10";
+      setStorage("numberOfQuestions", "10");
     }
     
     if (!this.difficulty) {
@@ -61,10 +61,17 @@ export default {
       setStorage("selectedCategory", this.category);
     } 
 
-    await fetch(`https://opentdb.com/api.php?amount=${this.numberOfQuestions}&category=${this.category}&difficult=${this.difficulty}`)
+    await fetch(`https://opentdb.com/api.php?amount=${this.numberOfQuestions}&category=${this.category}&difficulty=${this.difficulty}`)
           .then(response => response.json())
-          .then(data => (this.questions = data.results))
+          .then(data => (this.questions = data))
           .catch(error => console.log(error));
+
+    if (this.questions.response_code === 1) {
+      alert("There are not enough questions in this category and difficulty.");
+      this.$router.push("/");
+    } else {
+      this.questions = this.questions.results;
+    }
 
     setStorage("questions", this.questions);
   }

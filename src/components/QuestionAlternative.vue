@@ -1,5 +1,5 @@
 <template>
-    <b-button block variant="outline-secondary" class="question-buttons" @click="next">{{alternative}}</b-button>
+    <b-button block variant="outline-secondary" class="question-buttons" @click="next" v-html="alternative"></b-button>
 </template>
 
 <script>
