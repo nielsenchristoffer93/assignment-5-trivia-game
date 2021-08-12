@@ -6,15 +6,24 @@
 </template>
 
 <script>
+import {getStorage} from "../storage";
 
 export default {
     name: 'ResultScreen',
-    components: {
-  },
+    data() {
+        return {
+            questions: [],
+            answers: []
+        }
+    },
     methods: {
         restart() {
             this.$router.push("/questions");
         }
+    },
+    created() {
+        this.questions = getStorage("questions");
+        this.answers = getStorage("answers");
     }
 }
 </script>

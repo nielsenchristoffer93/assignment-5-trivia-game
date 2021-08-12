@@ -19,6 +19,7 @@ import QuestionHeader from "../components/QuestionHeader.vue";
 import QuestionAlternative from "../components/QuestionAlternative.vue";
 
 export default {
+  name:"QuestionBox",
   components: {
     QuestionHeader,
     QuestionAlternative,

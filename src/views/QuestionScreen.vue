@@ -11,7 +11,7 @@
 
 <script>
 import QuestionBox from "../components/QuestionBox.vue";
-import {setStorage} from "../storage";
+import {getStorage, setStorage} from "../storage";
 
 export default {
   name: "QuestionScreen",
@@ -41,9 +41,14 @@ export default {
     }
   },
   async created() {
+    this.numberOfQuestions = getStorage("numberOfQuestions");
+    this.difficulty = getStorage("selectedDifficulty");
+    this.category = getStorage("selectedCategory");
+
     await fetch(`https://opentdb.com/api.php?amount=${this.numberOfQuestions}&category=${this.category}&difficult=${this.difficulty}`)
-    .then(response => response.json())
-    .then(data => (this.questions = data.results))
+          .then(response => response.json())
+          .then(data => (this.questions = data.results))
+          .catch(error => console.log(error));
 
     setStorage("questions", this.questions);
   }

@@ -5,7 +5,7 @@
     <b-card id="card">
       <b-row>
         <label for="numberOfQuestions">Number of questions:</label>
-        <b-form-input v-model="selectedNumberOfQuestions" type="number" id="numberOfQuestions"></b-form-input>
+        <b-form-input v-model="numberOfQuestions" type="number" id="numberOfQuestions"></b-form-input>
       </b-row>
       <b-row>
         <label for="difficulty">Select difficulty:</label>
@@ -28,9 +28,9 @@
       <b-row>
         <!--https://opentdb.com/api.php?amount=10&category=24&difficulty=medium-->
         <!--TA BORT ROUTER LINK OCH LÄGG TILL EN METOD FÖR STARTGAME OCH SPARA KATEOGIR, DIFFICULTY OCH AMOUNT-->
-        <router-link :to="`/questions/${this.selectedCategory}/${this.selectedNumberOfQuestions}/${this.selectedDifficulty}`" style="text-decoration: none;">
-          <b-button block variant="success" id="startButton">Start Game</b-button>
-        </router-link>
+        <!--<router-link :to="`/questions/${this.selectedCategory}/${this.selectedNumberOfQuestions}/${this.selectedDifficulty}`" style="text-decoration: none;">-->
+          <b-button block variant="success" id="startButton" @click="startGame">Start Game</b-button>
+        <!--</router-link>-->
       </b-row>
     </b-card>
     </b-col>
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import {setStorage} from "../storage";
+
 export default {
   name: 'StartScreen',
   components: {
@@ -47,28 +49,40 @@ export default {
     return {
       selectedCategory: String,
       selectedDifficulty: String,
-      selectedNumberOfQuestions: "10",
+      numberOfQuestions: "10",
       categories: [],
       difficulties: [
       {
-        value: 2,
+        value: 0,
         text: "Easy"
       },
       {
-        value: 3,
+        value: 1,
         text: "Medium"
       },
       {
-        value: 4,
+        value: 2,
         text: "Hard"
       }
       ]
     }
   },
+  methods: {
+    startGame() {
+      setStorage("numberOfQuestions", this.numberOfQuestions);
+      setStorage("selectedDifficulty", this.selectedDifficulty);
+      setStorage("selectedCategory", this.selectedCategory);
+      this.$router.push("/questions");
+    }
+  },
   created() {
     fetch("https://opentdb.com/api_category.php")
     .then(response => response.json())
-    .then(data => (this.categories = data.trivia_categories));
+    .then(data => (this.categories = data.trivia_categories))
+    .catch(error => console.log(error));
+
+    // Clears localStorage of keys and values. 
+    localStorage.clear();
   }
 }
 </script>

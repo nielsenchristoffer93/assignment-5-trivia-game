@@ -1,23 +1,24 @@
-import VueRouter from 'vue-router';
-import StartScreen from './views/StartScreen.vue';
-import QuestionScreen from './views/QuestionScreen.vue';
-import ResultScreen from './views/ResultScreen';
+import VueRouter from "vue-router";
+import StartScreen from "./views/StartScreen.vue";
+import QuestionScreen from "./views/QuestionScreen.vue";
+import ResultScreen from "./views/ResultScreen";
 
 const routes = [
     {
-        path: '/',
-        name: 'Start-screen',
+        path: "/",
+        name: "Start-screen",
         component: StartScreen
     },
     {
-        path: '/questions/:category/:numberOfQuestions/:difficulty',
-        name: 'Questions',
-        component: QuestionScreen,
-        props: true
+        //path: "/questions/:category/:numberOfQuestions/:difficulty",
+        path: "/questions",
+        name: "Questions",
+        component: QuestionScreen
+        //props: true
     },
     {
-        path: '/results',
-        name: 'Results',
+        path: "/results",
+        name: "Results",
         component: ResultScreen
     }
 ];

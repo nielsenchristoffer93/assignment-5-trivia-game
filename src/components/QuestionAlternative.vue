@@ -4,6 +4,7 @@
 
 <script>
 export default {
+    name:"QuestionAlternative",
     props: {
         alternative: String,
     },
