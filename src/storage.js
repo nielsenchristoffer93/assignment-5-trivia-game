@@ -4,6 +4,7 @@ export const getStorage = key => {
     if (data) {
         return JSON.parse(data);
     } else {
+        console.log(key)
         return false;
     }
 }

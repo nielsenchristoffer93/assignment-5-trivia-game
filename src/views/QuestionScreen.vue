@@ -26,7 +26,7 @@ export default {
       playerAnswers: [],
       category: "",
       difficulty: "",
-      numberOfQuestions: "",
+      numberOfQuestions: String,
     };
   },
   methods: {
@@ -41,21 +41,25 @@ export default {
   },
   async created() {
     this.numberOfQuestions = getStorage("numberOfQuestions");
-      this.difficulty = getStorage("selectedDifficulty");
+    this.difficulty = getStorage("selectedDifficulty");
     this.category = getStorage("selectedCategory");
+
+
     if (!this.numberOfQuestions) {
-      console.log("numberOfQuestions is: " + this.numberOfQuestions);
+      console.log("HEJ")
       this.numberOfQuestions = 10;
-      setStorage("numberOfQuestions", 10)
+      setStorage("numberOfQuestions", 10);
     }
+    
     if (!this.difficulty) {
-      console.log("difficulty is: " + this.difficulty);
       this.difficulty = "";
-    }
+      setStorage("selectedDifficulty", this.difficulty);
+    } 
+
     if (!this.category) {
-      console.log("category is: " + this.category);
       this.category = "";
-    }
+      setStorage("selectedCategory", this.category);
+    } 
 
     await fetch(`https://opentdb.com/api.php?amount=${this.numberOfQuestions}&category=${this.category}&difficult=${this.difficulty}`)
           .then(response => response.json())

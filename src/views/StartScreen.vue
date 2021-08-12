@@ -5,12 +5,12 @@
     <b-card id="card">
       <b-row>
         <label for="numberOfQuestions">Number of questions:</label>
-        <b-form-input v-model="numberOfQuestions" type="number" id="numberOfQuestions"></b-form-input>
+        <b-form-input :state="numberInRange()" v-model="numberOfQuestions" type="number" id="numberOfQuestions" aria-describedby="input-live-help input-live-feedback"></b-form-input>
       </b-row>
       <b-row>
         <label for="difficulty">Select difficulty:</label>
         <b-form-select v-model="selectedDifficulty" name="difficulty" id="difficulty">
-          <!--<option :value="null">Any Difficulty</option>-->
+          <option :value="null">Any Difficulty</option>
           <option v-for="difficulty in this.difficulties" :key="difficulty.value" :value="difficulty.text.toLowerCase()">
             {{difficulty.text}}
           </option>
@@ -19,18 +19,14 @@
       <b-row>
         <label for="category">Select category:</label>
         <b-form-select v-model="selectedCategory" name="category" id="category" >
-          <!--<option :value="null">Any Category</option>-->
+          <option :value="null">Any Category</option>
           <option v-for="category in this.categories" :key="category.id" :value="category.id">
             {{category.name}}
           </option>
         </b-form-select>
       </b-row>
       <b-row>
-        <!--https://opentdb.com/api.php?amount=10&category=24&difficulty=medium-->
-        <!--TA BORT ROUTER LINK OCH LÄGG TILL EN METOD FÖR STARTGAME OCH SPARA KATEOGIR, DIFFICULTY OCH AMOUNT-->
-        <!--<router-link :to="`/questions/${this.selectedCategory}/${this.selectedNumberOfQuestions}/${this.selectedDifficulty}`" style="text-decoration: none;">-->
-          <b-button block variant="success" id="startButton" @click="startGame">Start Game</b-button>
-        <!--</router-link>-->
+          <b-button block variant="success" :disabled="numberInRange() === false" id="startButton" @click="startGame">Start Game</b-button>
       </b-row>
     </b-card>
     </b-col>
@@ -47,10 +43,10 @@ export default {
   },
   data() {
     return {
-      selectedCategory: String,
-      selectedDifficulty: String,
+      selectedCategory: null,
+      selectedDifficulty: null,
       numberOfQuestions: "10",
-      categories: [],
+      categories: Array,
       difficulties: [
       {
         value: 0,
@@ -73,6 +69,10 @@ export default {
       setStorage("selectedDifficulty", this.selectedDifficulty);
       setStorage("selectedCategory", this.selectedCategory);
       this.$router.push("/questions");
+    },
+    numberInRange() {
+      console.log(!(this.numberOfQuestions < 1 || this.numberOfQuestions > 50));
+      return (!(this.numberOfQuestions < 1 || this.numberOfQuestions > 50)) ? true: false;
     }
   },
   created() {
