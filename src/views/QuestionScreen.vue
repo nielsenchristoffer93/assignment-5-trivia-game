@@ -15,11 +15,7 @@ import {getStorage, setStorage} from "../storage";
 
 export default {
   name: "QuestionScreen",
-  props: {
-    category: String,
-    difficulty: String,
-    numberOfQuestions: String,
-  },
+  
   components: {
       QuestionBox,
   },
@@ -27,7 +23,10 @@ export default {
     return {
       questions: [],
       index: 0,
-      playerAnswers: []
+      playerAnswers: [],
+      category: "",
+      difficulty: "",
+      numberOfQuestions: "",
     };
   },
   methods: {
@@ -41,9 +40,25 @@ export default {
     }
   },
   async created() {
-    this.numberOfQuestions = getStorage("numberOfQuestions");
-    this.difficulty = getStorage("selectedDifficulty");
-    this.category = getStorage("selectedCategory");
+    if (!this.numberOfQuestions) {
+      console.log("numberOfQuestions is: " + this.numberOfQuestions);
+      this.numberOfQuestions = 10;
+      setStorage("numberOfQuestions", 10)
+    } else {
+      this.numberOfQuestions = getStorage("numberOfQuestions");
+    }
+    if (!this.difficulty) {
+      console.log("difficulty is: " + this.difficulty);
+      this.difficulty = "";
+    } else {
+      this.difficulty = getStorage("selectedDifficulty");
+    }
+    if (!this.category) {
+      console.log("category is: " + this.category);
+      this.category = "";
+    } else {
+      this.category = getStorage("selectedCategory");
+    }
 
     await fetch(`https://opentdb.com/api.php?amount=${this.numberOfQuestions}&category=${this.category}&difficult=${this.difficulty}`)
           .then(response => response.json())
