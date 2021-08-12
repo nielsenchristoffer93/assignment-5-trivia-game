@@ -1,5 +1,6 @@
 <template>
     <b-container>
+        <!-- Calculates the score and displays -->
         <h1 id="welcome-heading">You scored: {{getScore()}} out of {{answers.length*10}}! 🎉</h1>
         <b-row>
             <b-col>
@@ -9,8 +10,9 @@
                 <h4 style="text-align:end;">Correct answers</h4>
             </b-col>
         </b-row>
+        <!-- -->
         <b-row v-for="(answer, index) in answers" :key="answer">
-            <ResultPill
+            <QuestionResult
                 :question="questions[index].question"
                 :playerAnswer="answers[index]"
                 :correctAnswer="correctAnswers[index]"
@@ -30,12 +32,12 @@
 
 <script>
 import {getStorage} from "../storage";
-import ResultPill from '../components/resultComponents/ResultPill.vue'
+import QuestionResult from '../components/resultComponents/QuestionResult.vue'
 
 export default {
     name: 'ResultScreen',
     components: {
-        ResultPill
+        QuestionResult
     },
     data() {
         return {
