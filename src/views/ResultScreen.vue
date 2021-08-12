@@ -19,7 +19,7 @@
 
         <b-row>
             <b-col>
-                <b-button block @click="restart()">Play again</b-button>
+                <b-button block variant="primary" @click="restart()">Play again</b-button>
             </b-col>
             <b-col>
                 <b-button block @click="goToStartScreen()">Go to start screen</b-button>
@@ -59,8 +59,7 @@ export default {
                 }
             }
             return score*10;
-            }
-
+        }
     },
     created() {
         this.questions = getStorage("questions");

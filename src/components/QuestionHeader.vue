@@ -1,7 +1,7 @@
 <template>
     <b-container class="question-header">
         <b-row align-h="between" class="category">
-            <h3>Category: {{category}} 🎶</h3>
+            <h3>Category: {{appendEmojiBasedOnCategory()}}</h3>
             <h3>Question: {{index}}/{{numberOfQuestions}}</h3>
         </b-row>
         <b-row>
@@ -19,10 +19,36 @@
             question: String,
             index: Number,
             numberOfQuestions: Number
+        },
+        methods: {
+            appendEmojiBasedOnCategory() {
+                if (this.category.includes("Knowledge")) {
+                    return this.category + " 📚"
+                } else if (this.category.includes("Video Games")) {
+                    return this.category + " 👾"
+                } else if (this.category.includes("Entertainment")) {
+                    return this.category + " 📺"
+                } else if (this.category.includes("Computers")) {
+                    return this.category + " 💻"
+                } else if (this.category.includes("Sports")) {
+                    return this.category + " ⚽"
+                } else if (this.category.includes("Geography")) {
+                    return this.category + " 🌍"
+                } else if (this.category.includes("Art")) {
+                    return this.category + " 🎨"
+                } else if (this.category.includes("Celebrities")) {
+                    return this.category + " 📸"
+                } else if (this.category.includes("Animals")) {
+                    return this.category + " 🐴"
+                } else if (this.category.includes("Vehicles")) {
+                    return this.category + " 🚙"
+                } else {
+                    return this.category + " 📖"
+                }
+            }
         }
     }
 </script>
-
 
 <style scoped>
     .question-header {

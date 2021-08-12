@@ -35,24 +35,26 @@
 
         margin-bottom: 0;
     }
-    .playerAnswer {
+
+    .playerAnswer,
+    .correctAnswer {
         font-weight: 600;
         padding: 10px;
-        
+    }
+
+    .playerAnswer {
         border-right:2px solid rgb(54, 54, 54);
-        background-color: rgb(179, 2, 2);
+        background-color: rgb(220, 53, 69);
         border-top-left-radius: 0.25rem;
         border-bottom-left-radius: 0.25rem;
     }
     .playerAnswerCorrect {
-        background-color: rgb(2, 179, 46);
+        background-color: rgb(60, 167, 69);
         border: 0;
     }
     .correctAnswer {
-        font-weight: 600;
-        padding: 10px;
         text-align: end;
-        background-color: rgb(2, 179, 46);
+        background-color: rgb(60, 167, 69);
         border-top-right-radius: 0.25rem;
         border-bottom-right-radius: 0.25rem;
     }

@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h1 id="welcome-heading">WELCOME TO A TRIVIA GAME MADE WITH VUE</h1>
+    <h1 id="welcome-heading">🎉WELCOME TO A TRIVIA GAME MADE WITH VUE🎉</h1>
     <b-col id="input" md="6" offset-md="3" align-self="center">
     <b-card id="card">
       <b-row>
@@ -26,7 +26,7 @@
         </b-form-select>
       </b-row>
       <b-row>
-          <b-button block variant="success" :disabled="numberInRange() === false" id="startButton" @click="startGame">Start Game</b-button>
+          <b-button block variant="primary" :disabled="numberInRange() === false" id="startButton" @click="startGame">Start Game</b-button>
       </b-row>
     </b-card>
     </b-col>
