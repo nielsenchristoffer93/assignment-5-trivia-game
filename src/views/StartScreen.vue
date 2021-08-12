@@ -5,6 +5,7 @@
     <b-card id="card">
       <b-row>
         <label for="numberOfQuestions">Number of questions:</label>
+        <!-- Sets the border red if NumberInRange===false else green --> 
         <b-form-input :state="numberInRange()" v-model="numberOfQuestions" type="number" id="numberOfQuestions" aria-describedby="input-live-help input-live-feedback"></b-form-input>
       </b-row>
       <b-row>
@@ -26,6 +27,7 @@
         </b-form-select>
       </b-row>
       <b-row>
+          <!-- Button is disabled if numberInRange()=== false -->
           <b-button block variant="success" :disabled="numberInRange() === false" id="startButton" @click="startGame">Start Game</b-button>
       </b-row>
     </b-card>
@@ -64,16 +66,26 @@ export default {
     }
   },
   methods: {
+    /**
+     * Saves the chosen settings to localStorage, then switches to questionScreen
+     */
     startGame() {
       setStorage("numberOfQuestions", this.numberOfQuestions);
       setStorage("selectedDifficulty", this.selectedDifficulty);
       setStorage("selectedCategory", this.selectedCategory);
       this.$router.push("/questions");
     },
+    /**
+     * Returns true or false if Number of Questions is the inside or outside of the range.
+     */
     numberInRange() {
       return (!(this.numberOfQuestions < 1 || this.numberOfQuestions > 50)) ? true: false;
     }
   },
+  /**
+   * Fetches all the categories from the api and saves it to the categories variable,
+   * also clears localStorage.
+   */
   created() {
     fetch("https://opentdb.com/api_category.php")
     .then(response => response.json())
