@@ -3,6 +3,7 @@
         <p class="question" v-html="question"></p>
         <b-row>
             <b-col class="zeroPaddingRight">
+                <!-- Adds different css styling based on users answer-->
                 <p class="playerAnswer"
                 v-bind:class="[ isAnswerCorrect ? 'playerAnswerCorrect': 'playerAnswer' ]" v-html="playerAnswer"></p>
             </b-col>
@@ -18,6 +19,7 @@
         name: "ResultPill",
         data() {
             return {
+                // Check if players answer is correct
                 isAnswerCorrect: this.playerAnswer === this.correctAnswer,
             }
         },
@@ -27,7 +29,6 @@
             correctAnswer: String
         },
     }
-
 </script>
 
 <style scoped>
