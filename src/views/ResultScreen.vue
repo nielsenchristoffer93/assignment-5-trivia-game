@@ -1,7 +1,14 @@
 <template>
     <b-container>
-        <h2 id="welcome-heading">Welcome to the results!</h2>
-        
+        <h1 id="welcome-heading">You scored: {{getScore()}} out of {{answers.length*10}}!</h1>
+        <b-row>
+            <b-col>
+                <h4 >Your answers</h4>
+            </b-col>
+            <b-col>
+                <h4 style="text-align:end;">Correct answers</h4>
+            </b-col>
+        </b-row>
         <b-row v-for="(answer, index) in answers" :key="answer">
             <ResultPill
                 :question="questions[index].question"
@@ -9,6 +16,7 @@
                 :correctAnswer="correctAnswers[index]"
                 />
         </b-row>
+
         <b-row>
             <b-col>
                 <b-button block @click="restart()">Play again</b-button>
@@ -42,7 +50,17 @@ export default {
         },
         goToStartScreen(){
             this.$router.push("/");
-        }
+        },
+        getScore() {
+            let score = 0;
+            for(let i = 0; i < this.answers.length; i++) {
+                if(this.answers[i] === this.correctAnswers[i]){
+                    score++;
+                }
+            }
+            return score*10;
+            }
+
     },
     created() {
         this.questions = getStorage("questions");
@@ -55,5 +73,4 @@ export default {
 </script>
 
 <style>
-
 </style>
