@@ -40,9 +40,9 @@ export default {
     },
     data() {
         return {
-            questions: [],
-            answers: [],
-            correctAnswers: []
+            questions: Array,
+            answers: Array,
+            correctAnswers: Array
         }
     },
     methods: {
@@ -85,6 +85,3 @@ export default {
     }
 }
 </script>
-
-<style>
-</style>

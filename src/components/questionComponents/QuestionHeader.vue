@@ -1,6 +1,7 @@
 <template>
     <b-container class="question-header">
         <b-row align-h="between" class="category">
+            <!-- Displays category (with appropriate emoji) and the progress of questions -->
             <h3>Category: {{appendEmojiBasedOnCategory()}}</h3>
             <h3>Question: {{index}}/{{numberOfQuestions}}</h3>
         </b-row>
@@ -21,6 +22,7 @@
             numberOfQuestions: Number
         },
         methods: {
+            // Appends an emoji to the end of the category based on the name of the category.
             appendEmojiBasedOnCategory() {
                 if (this.category.includes("Knowledge")) {
                     return this.category + " 🧠"
@@ -69,6 +71,7 @@
         height: 40vh;
         position: relative;
     }
+    
     .category {
         margin-top: 10vh;
     }

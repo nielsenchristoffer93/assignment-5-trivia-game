@@ -49,19 +49,23 @@
         border-top-left-radius: 0.25rem;
         border-bottom-left-radius: 0.25rem;
     }
+    
     .playerAnswerCorrect {
         background-color: rgb(60, 167, 69);
         border: 0;
     }
+
     .correctAnswer {
         text-align: end;
         background-color: rgb(60, 167, 69);
         border-top-right-radius: 0.25rem;
         border-bottom-right-radius: 0.25rem;
     }
+
     .zeroPaddingLeft {
         padding-left: 0;
     }
+
     .zeroPaddingRight {
         padding-right: 0;
     }
