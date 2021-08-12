@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import QuestionBox from "../components/QuestionBox.vue";
+import QuestionBox from "../components/questionComponents/QuestionBox.vue";
 import {getStorage, setStorage} from "../storage";
 
 export default {

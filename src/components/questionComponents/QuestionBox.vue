@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import QuestionHeader from "../components/QuestionHeader.vue";
-import QuestionAlternative from "../components/QuestionAlternative.vue";
+import QuestionHeader from "./QuestionHeader.vue";
+import QuestionAlternative from "./QuestionAlternative.vue";
 
 export default {
   name:"QuestionBox",
