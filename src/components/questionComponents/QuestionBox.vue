@@ -19,7 +19,7 @@ import QuestionHeader from "./QuestionHeader.vue";
 import QuestionAlternative from "./QuestionAlternative.vue";
 
 export default {
-  name:"QuestionBox",
+  name: "QuestionBox",
   components: {
     QuestionHeader,
     QuestionAlternative,
@@ -51,13 +51,11 @@ export default {
       return answers;
     },
     /**
-    * Notifies the parent that an alternative-button has been pressed, and sends back the chosen alternative. 
-    */
+     * Notifies the parent that an alternative-button has been pressed, and sends back the chosen alternative.
+     */
     next(alternative) {
       this.$emit("next", alternative);
-    },
-  },
+    }
+  }
 };
 </script>
-
-<style scoped></style>
