@@ -4,6 +4,8 @@ An online trivia game as a Single Page Application using the Vue.js framework (v
 
 Link to Figma sketches: https://github.com/nielsenchristoffer93/assignment-5-trivia-game/blob/main/Assignment5%20Figma%20sketches.pdf
 
+Link to application: https://assigmnent5-trivia.herokuapp.com/
+
 ## Start Screen 👍
 
 The first view is a start screen. Where you can select **how many questions** you want, which **difficulty** you want to play at and what **category**.
