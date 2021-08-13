@@ -117,6 +117,5 @@ span:hover + img{
    z-index: 99;
    width: 40vw;
    height: auto;
-   transition: all 2s ease-in;
 }
 </style>
