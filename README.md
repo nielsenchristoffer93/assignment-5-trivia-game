@@ -1,3 +1,5 @@
+Build an online trivia game as a Single Page Application using the Vue.js framework (version 2.x). 
+
 # assignment-5-trivia-game
 
 ## Project setup
