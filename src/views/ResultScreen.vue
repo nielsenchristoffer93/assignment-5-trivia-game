@@ -4,6 +4,7 @@
     <h1 id="result-heading">
       You scored: {{ getScore() }} out of {{ answers.length * 10 }}!
       <span class="celebrate">🎉</span>
+      <img src="../assets/image.png" alt="image.png">
     </h1>
     <b-row>
       <b-col>
@@ -101,5 +102,21 @@ export default {
 
 .button-row {
   margin-bottom: 5vh;
+}
+
+img{
+   display: none;
+   
+}
+
+span:hover + img{
+   display: block;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   z-index: 99;
+   width: 40vw;
+   height: auto;
+   transition: all 2s ease-in;
 }
 </style>
