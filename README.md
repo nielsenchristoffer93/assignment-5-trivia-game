@@ -6,6 +6,8 @@ Link to Figma sketches: https://github.com/nielsenchristoffer93/assignment-5-tri
 
 Link to application: https://assigmnent5-trivia.herokuapp.com/
 
+Can you find Shrek? 💚 *Hints: look through the emojis*
+
 ## Start Screen 👍
 
 The first view is a start screen. Where you can select **how many questions** you want, which **difficulty** you want to play at and what **category**.
