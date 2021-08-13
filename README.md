@@ -1,7 +1,7 @@
 # Assignment 5 Trivia Game 📚
 
 An online trivia game as a Single Page Application using the Vue.js framework (version 2.x).
-Link to Figma sketches: https://github.com/nielsenchristoffer93/assignment-5-trivia-game/blob/main/Assignment5%20Figma%20sketches.pdf
+  Link to Figma sketches: https://github.com/nielsenchristoffer93/assignment-5-trivia-game/blob/main/Assignment5%20Figma%20sketches.pdf
 
 ## Start Screen 👍
 
